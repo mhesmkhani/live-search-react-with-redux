@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {Card, Col, Row, Space} from "antd";
+import {Card, Col, List, Row, Space, Typography} from "antd";
 import Search from "antd/lib/input/Search";
-import { ISearchState} from "../interfaces/store/SearchState";
+import {ISearchArrays, ISearchState} from "../interfaces/store/SearchState";
 import axios from 'axios';
 import {connect} from "react-redux";
 import {getSearch} from "../redux/actions/SearchAction";
@@ -23,14 +23,10 @@ function SearchBox(props:any){
 
     function onSearch(){
         const query = state.q
-        if(query.length > 2){
-            props.onGetSearch(query)
-        }
+        props.onGetSearch(query)
     }
     const {loading,search} = props
-    const searchResults = search.searchResult
-    console.log(searchResults)
-    return (
+     return (
         <React.Fragment>
             <Row>
                 <Col span={24}>
@@ -42,13 +38,25 @@ function SearchBox(props:any){
                 </Col>
               <Col span={24} offset={6}>
                   <Space direction="vertical">
-                      <Card title="Result" style={{ width: 300 }}>
-                          {/*{*/}
-                          {/*    searchResults.map((item:string) => {*/}
-                          {/*        <p>{item}</p>*/}
-                          {/*    })*/}
-                          {/*}*/}
-                      </Card>
+                      <List
+
+                          bordered
+                          dataSource={search.searchResult}
+                          renderItem={(item:any) => (
+                              <List.Item style={{width: 800,textAlign:'right'}}>
+                                  <Typography.Text mark>[aparat]</Typography.Text> {item.title}
+                              </List.Item>
+                          )}
+                      />
+                      {/*{*/}
+                      {/*    search.searchResult.map((item:any) =>*/}
+                      {/*        <Card  style={{ width: '100%' }} dir={"rtl"}>*/}
+                      {/*         <p>{item.title}</p>*/}
+                      {/*        </Card>*/}
+                      {/*    )*/}
+
+                      {/*}*/}
+
                   </Space>
               </Col>
             </Row>

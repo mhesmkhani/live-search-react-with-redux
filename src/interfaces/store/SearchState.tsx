@@ -1,6 +1,6 @@
 export interface ISearchState {
     q:string;
 }
-export interface ISearchFunctions {
-    onChange:Function
+export interface ISearchArrays {
+    results:string[]
 }

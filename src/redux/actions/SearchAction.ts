@@ -12,10 +12,10 @@ export function getSearch(query:string) {
             .then(response => {
                 dispatch(setLoading(false))
                 console.log(response)
-                if(response.data.meta.q.length === 0){
+                if(response.data.videobysearch === null){
                     dispatch(setSearchResult([]));
                 }else {
-                    dispatch(setSearchResult(response.data.data));
+                    dispatch(setSearchResult(response.data.videobysearch));
                 }
 
             }).catch(error => {
