@@ -48,14 +48,6 @@ function SearchBox(props:any){
                               </List.Item>
                           )}
                       />
-                      {/*{*/}
-                      {/*    search.searchResult.map((item:any) =>*/}
-                      {/*        <Card  style={{ width: '100%' }} dir={"rtl"}>*/}
-                      {/*         <p>{item.title}</p>*/}
-                      {/*        </Card>*/}
-                      {/*    )*/}
-
-                      {/*}*/}
 
                   </Space>
               </Col>
